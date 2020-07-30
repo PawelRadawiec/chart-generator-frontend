@@ -48,7 +48,7 @@ app-header {
     grid-area: footer;
     background-color: rgb(44, 44, 44);
     color: white;
-    text-align: center;
+    text-align: left;
     padding: 25px 0;
   }
 
