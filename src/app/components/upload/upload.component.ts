@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngxs/store';
+import { UploadRequest } from 'src/app/store/chart.actions';
 
 @Component({
   selector: 'app-upload',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private store: Store
+  ) { }
 
   ngOnInit() {
+  }
+
+  upload(event) {
+    this.store.dispatch(new UploadRequest(event.target.files[0]));
   }
 
 }
