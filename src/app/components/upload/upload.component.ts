@@ -17,6 +17,7 @@ export class UploadComponent implements OnInit {
   }
 
   upload(event) {
+    console.log(event);
     this.store.dispatch(new UploadRequest(event.target.files[0]));
   }
 
