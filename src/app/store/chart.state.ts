@@ -32,7 +32,7 @@ export class ChartState {
 
     @Action(UploadRequest)
     uploadRequestAction(state: StateContext<ChartStateModel>, action: UploadRequest) {
-        return this.uploadService.upload(action.payload).pipe(
+        return this.uploadService.upload(action.payload, action.chartType).pipe(
             mergeMap(response => this.store.dispatch(new UploadResponse(response)))
         );
     }

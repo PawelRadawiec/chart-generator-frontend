@@ -27,7 +27,7 @@ export class MainComponent implements OnInit, OnDestroy {
   ];
   lineChartLegend = true;
   lineChartPlugins = [];
-  lineChartType = 'line';
+  lineChartType = 'bar';
 
   constructor(private store: Store) { }
 

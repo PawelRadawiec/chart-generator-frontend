@@ -1,10 +1,14 @@
 import { ChartData } from '../model/chart-data.model';
+import { ChartType } from '../components/upload/upload.component';
 
 
 export class UploadRequest {
     static readonly type = '[Chart] UploadRequest';
 
-    constructor(public payload: File) {
+    constructor(
+        public payload: File,
+        public chartType: ChartType
+    ) {
     }
 }
 
