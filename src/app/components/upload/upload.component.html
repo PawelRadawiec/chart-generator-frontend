@@ -1,8 +1,16 @@
-<select [(ngModel)]="type">
-    <option value="LINE">LINE</option>
-    <option value="COLUMN">COLUMN</option>
-</select>
-
-<section *ngIf="type">
-    <input type="file" id="customFile" (change)="upload($event)" onclick="this.value = null">
+<section>
+    <mat-form-field>
+        <mat-label>Column type</mat-label>
+        <mat-select [(ngModel)]="type">
+            <mat-option *ngFor="let option of options" [value]="option.value">
+                {{option.description}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <section *ngIf="type">
+        <mat-form-field>
+            <ngx-mat-file-input (change)="upload($event)" placeholder="Upload file">
+            </ngx-mat-file-input>
+        </mat-form-field>
+    </section>
 </section>

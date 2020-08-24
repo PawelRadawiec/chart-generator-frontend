@@ -5,6 +5,7 @@ import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { MatSelectModule } from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ChartsModule } from 'ng2-charts';
 
@@ -18,6 +19,9 @@ import { AsideComponent } from './aside/aside.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { ChartState } from './store/chart.state';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 
 @NgModule({
@@ -37,11 +41,15 @@ import { ChartState } from './store/chart.state';
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     ChartsModule,
     FormsModule,
+    MatInputModule,
     MatSelectModule,
+    MatButtonModule,
+    MaterialFileInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

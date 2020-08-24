@@ -16,6 +16,17 @@ export class UploadComponent implements OnInit {
   chartType = ChartType;
   type: ChartType;
 
+  options = [
+    {
+      value: 'COLUMN',
+      description: 'Column'
+    },
+    {
+      value: 'LINE',
+      description: 'Line'
+    }
+  ];
+
   constructor(
     private store: Store
   ) { }

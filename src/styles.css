@@ -1,63 +1,61 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    background-color: #E4F0FF;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #E4F0FF;
 }
 
 .container {
-    display: grid;
-    grid-template-columns: 200px 1fr 200px;
-    grid-template-rows: auto 1fr auto;
-    grid-gap: 12px;
-    grid-template-areas:
-    "header header header"
-    "nav content side"
-    "footer footer footer";
-    height: 100vh;
-  }
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  grid-template-rows: auto 1fr auto;
+  grid-gap: 12px;
+  grid-template-areas: "header header header" "nav content side" "footer footer footer";
+  height: 100vh;
+}
 
 app-header {
-    color: white;
-    font-size: 14px;
-    grid-area: header;
-    text-align: left;
-    background-color: rgb(44, 44, 44);
-  }
-  
-  app-nav-bar {
-    grid-area: nav;
-    margin-left: 0.6rem;
-    border-style: dashed;
-  }
-  
-  app-privacy-policy,
-  app-main {
-    grid-area: content;
-    border-style: dashed;
-    padding: 25px;
-  }
-  
-  app-aside {
-    grid-area: side;
-    margin-right: 0.6rem;
-    border-style: dashed;
-  }
-  
-  app-footer {
-    grid-area: footer;
-    background-color: rgb(44, 44, 44);
-    color: white;
-    text-align: left;
-    padding: 25px 0;
-  }
+  color: white;
+  font-size: 14px;
+  grid-area: header;
+  text-align: left;
+  background-color: rgb(44, 44, 44);
+}
 
-  ul li {
-    color: white;
-  }
-  ul li a {
-    color: white;
-    text-decoration: none;
-    display: inline-block;
-    margin-bottom: 15px;
-  }
+app-nav-bar {
+  grid-area: nav;
+  margin-left: 0.6rem;
+  /* border-style: dashed; */
+}
+
+app-privacy-policy, app-main {
+  grid-area: content;
+  /* border-style: dashed; */
+  padding: 25px;
+}
+
+app-aside {
+  grid-area: side;
+  margin-right: 0.6rem;
+  /* border-style: dashed; */
+}
+
+app-footer {
+  grid-area: footer;
+  background-color: rgb(44, 44, 44);
+  color: white;
+  text-align: left;
+  padding: 25px 0;
+}
+
+ul li {
+  color: white;
+}
+
+ul li a {
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 15px;
+}
