@@ -1,0 +1,14 @@
+<main>
+    <section>
+        <div class="chart-wrapper line-chart">
+            <canvas baseChart #baseChart="base-chart" 
+                [datasets]="datasets" 
+                [labels]="labels"
+                [colors]="lineChartColors"
+                [legend]="false" 
+                [chartType]="type"
+                [plugins]="lineChartPlugins">
+            </canvas>
+        </div>
+    </section>
+</main>

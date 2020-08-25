@@ -22,6 +22,7 @@ import { ChartState } from './store/chart.state';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { ChartComponent } from './components/chart/chart.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     MainComponent,
     AsideComponent,
     FooterComponent,
-    UploadComponent
+    UploadComponent,
+    ChartComponent
   ],
   imports: [
     NgxsModule.forRoot([

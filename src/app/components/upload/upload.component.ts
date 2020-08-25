@@ -18,8 +18,8 @@ export class UploadComponent implements OnInit {
 
   options = [
     {
-      value: 'COLUMN',
-      description: 'Column'
+      value: 'BAR',
+      description: 'Bar'
     },
     {
       value: 'LINE',
