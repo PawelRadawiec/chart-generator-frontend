@@ -1,1 +1,4 @@
-<app-chart></app-chart>
+
+<section *ngFor="let chart of charts">
+    <app-chart [chartData]="chart"></app-chart>
+</section>

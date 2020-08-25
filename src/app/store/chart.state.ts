@@ -7,12 +7,14 @@ import { mergeMap } from 'rxjs/operators';
 
 export interface ChartStateModel {
     chartData: ChartData;
+    charts: ChartData[];
 }
 
 @State<ChartStateModel>({
     name: 'charts',
     defaults: {
-        chartData: null
+        chartData: null,
+        charts: []
     }
 })
 
@@ -30,6 +32,11 @@ export class ChartState {
         return state.chartData;
     }
 
+    @Selector()
+    static charts(state: ChartStateModel) {
+        return state.charts;
+    }
+
     @Action(UploadRequest)
     uploadRequestAction(state: StateContext<ChartStateModel>, action: UploadRequest) {
         return this.uploadService.upload(action.payload, action.chartType).pipe(
@@ -39,8 +46,11 @@ export class ChartState {
 
     @Action(UploadResponse)
     uploadResponseAction(state: StateContext<ChartStateModel>, action: UploadResponse) {
+        const updatedCharts = state.getState().charts;
+        updatedCharts.push(action.response);
         state.patchState({
-            chartData: action.response
+            chartData: action.response,
+            charts: updatedCharts
         });
     }
 
