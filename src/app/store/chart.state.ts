@@ -2,7 +2,7 @@ import { ChartData } from '../model/chart-data.model';
 import { State, Store, Selector, Action, StateContext } from '@ngxs/store';
 import { Injectable } from '@angular/core';
 import { UploadService } from '../service/upload.service';
-import { GetChartsRequest, GetChartsResponse, UploadRequest, UploadResponse } from './chart.actions';
+import { DeleteChartByIdRequest, DeleteChartByIdResponse, GetChartsRequest, GetChartsResponse, UploadRequest, UploadResponse } from './chart.actions';
 import { mergeMap } from 'rxjs/operators';
 import { ChartDataService } from '../service/chart-data.service';
 
@@ -65,6 +65,20 @@ export class ChartState {
 
     @Action(GetChartsResponse)
     getChartsResponse(state: StateContext<ChartStateModel>, action: GetChartsResponse) {
+        state.patchState({
+            charts: action.response
+        });
+    }
+
+    @Action(DeleteChartByIdRequest)
+    deleteChartByIdRequest(state: StateContext<ChartStateModel>, action: DeleteChartByIdRequest) {
+        return this.chartDataService.delete(action.id).pipe(
+            mergeMap(response => this.store.dispatch(new DeleteChartByIdResponse(response)))
+        );
+    }
+
+    @Action(DeleteChartByIdResponse)
+    deleteChartByIdResponse(state: StateContext<ChartStateModel>, action: DeleteChartByIdResponse) {
         state.patchState({
             charts: action.response
         });

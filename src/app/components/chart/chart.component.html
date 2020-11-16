@@ -1,13 +1,11 @@
 <main>
     <section *ngIf="isDataLoaded">
         <div class="chart-wrapper line-chart">
-            <canvas baseChart #baseChart="base-chart" 
-                [datasets]="datasets" 
-                [labels]="labels"
-                [colors]="lineChartColors"
-                [legend]="false" 
-                [chartType]="type"
-                [plugins]="lineChartPlugins">
+            <p>Filename: {{chartData.fileName}}</p>
+            <p>Id: {{chartData.id}}</p>
+            <button mat-stroked-button color="warn" (click)="delete()">Delete</button>
+            <canvas baseChart #baseChart="base-chart" [datasets]="datasets" [labels]="labels" [colors]="lineChartColors"
+                [legend]="false" [chartType]="type" [plugins]="lineChartPlugins">
             </canvas>
         </div>
     </section>

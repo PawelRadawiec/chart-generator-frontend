@@ -30,3 +30,15 @@ export class GetChartsResponse {
 
     constructor(public response: ChartData[]) { }
 }
+
+export class DeleteChartByIdRequest {
+    static readonly type = '[Chart] DeleteChartByIdRequest';
+
+    constructor(public id: string) { }
+}
+
+export class DeleteChartByIdResponse {
+    static readonly type = '[Chart] DeleteChartByIdResponse';
+
+    constructor(public response: ChartData[]) { }
+}
