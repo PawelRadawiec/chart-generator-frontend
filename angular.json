@@ -117,6 +117,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "chart-generator-frontend"
+    }
+  },
+  "defaultProject": "chart-generator-frontend",
+  "cli": {
+    "analytics": false
+  }
 }

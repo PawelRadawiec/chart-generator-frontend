@@ -2,8 +2,9 @@ import { ChartData } from '../model/chart-data.model';
 import { State, Store, Selector, Action, StateContext } from '@ngxs/store';
 import { Injectable } from '@angular/core';
 import { UploadService } from '../service/upload.service';
-import { UploadRequest, UploadResponse } from './chart.actions';
+import { GetChartsRequest, GetChartsResponse, UploadRequest, UploadResponse } from './chart.actions';
 import { mergeMap } from 'rxjs/operators';
+import { ChartDataService } from '../service/chart-data.service';
 
 export interface ChartStateModel {
     chartData: ChartData;
@@ -23,7 +24,8 @@ export class ChartState {
 
     constructor(
         private store: Store,
-        private uploadService: UploadService
+        private uploadService: UploadService,
+        private chartDataService: ChartDataService
     ) {
     }
 
@@ -51,6 +53,20 @@ export class ChartState {
         state.patchState({
             chartData: action.response,
             charts: updatedCharts
+        });
+    }
+
+    @Action(GetChartsRequest)
+    getChartsRequest(state: StateContext<ChartStateModel>, action: GetChartsRequest) {
+        return this.chartDataService.search().pipe(
+            mergeMap(response => this.store.dispatch(new GetChartsResponse(response)))
+        );
+    }
+
+    @Action(GetChartsResponse)
+    getChartsResponse(state: StateContext<ChartStateModel>, action: GetChartsResponse) {
+        state.patchState({
+            charts: action.response
         });
     }
 

@@ -18,3 +18,15 @@ export class UploadResponse {
     constructor(public response: ChartData) {
     }
 }
+
+export class GetChartsRequest {
+    static readonly type = '[Chart] GetChartsRequest';
+
+    constructor() { }
+}
+
+export class GetChartsResponse {
+    static readonly type = '[Chart] GetChartsResponse';
+
+    constructor(public response: ChartData[]) { }
+}

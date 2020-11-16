@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './components/main/main.component';
+import { ChartsResolver } from './resolvers/charts.resolver';
 
 
 const routes: Routes = [
@@ -11,12 +12,14 @@ const routes: Routes = [
   },
   {
     path: 'home',
+    resolve: [ChartsResolver],
     component: MainComponent
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [ChartsResolver]
 })
 export class AppRoutingModule { }
