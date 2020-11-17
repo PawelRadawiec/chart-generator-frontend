@@ -1,4 +1,5 @@
-import { ChartDataSets } from 'chart.js';
+import { ChartDataSets, ChartType } from 'chart.js';
+import { DataSeriesType } from './data-series-type.model';
 
 export class ChartData {
     id: string;
@@ -6,4 +7,10 @@ export class ChartData {
     lineChartLabels: string[];
     type: string;
     fileName: string;
+    option: ChartDataSeriesOption;
+}
+
+export class ChartDataSeriesOption {
+    chartType: ChartType;
+    dataSeriesType: DataSeriesType;
 }

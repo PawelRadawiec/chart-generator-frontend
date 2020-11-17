@@ -1,8 +1,10 @@
 <main>
     <section *ngIf="isDataLoaded">
         <div class="chart-wrapper line-chart">
-            <p>Filename: {{chartData.fileName}}</p>
             <p>Id: {{chartData.id}}</p>
+            <p>Type: {{chartData.type}}</p>
+            <p>Filename: {{chartData.fileName}}</p>
+            <p>Data series in: {{chartData?.option?.dataSeriesType}}</p>
             <button mat-stroked-button color="warn" (click)="delete()">Delete</button>
             <canvas baseChart #baseChart="base-chart" [datasets]="datasets" [labels]="labels" [colors]="lineChartColors"
                 [legend]="false" [chartType]="type" [plugins]="lineChartPlugins">

@@ -7,7 +7,15 @@
             </mat-option>
         </mat-select>
     </mat-form-field>
-    <section *ngIf="type">
+    <mat-form-field *ngIf="type">
+        <mat-label>Data series type</mat-label>
+        <mat-select [(ngModel)]="dataSeriesType">
+            <mat-option *ngFor="let option of seriesOptions" [value]="option.value">
+                {{option.description}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <section *ngIf="dataSeriesType">
         <mat-form-field>
             <ngx-mat-file-input (change)="upload($event)" placeholder="Upload file">
             </ngx-mat-file-input>

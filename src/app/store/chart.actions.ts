@@ -1,5 +1,6 @@
 import { ChartData } from '../model/chart-data.model';
 import { ChartType } from '../components/upload/upload.component';
+import { UploadDataRequest } from '../model/upload-request.model';
 
 
 export class UploadRequest {
@@ -7,7 +8,7 @@ export class UploadRequest {
 
     constructor(
         public payload: File,
-        public chartType: ChartType
+        public request: UploadDataRequest
     ) {
     }
 }
