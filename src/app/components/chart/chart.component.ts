@@ -17,11 +17,12 @@ export class ChartComponent implements OnInit {
   labels: string[] = [];
   type: string;
   isDataLoaded = false;
+  chartLegened = false;
 
   lineChartColors: Color[] = [
     {
       borderColor: 'black',
-      backgroundColor: 'rgba(255,255,0,0.28)',
+      backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)'],
     },
   ];
   lineChartPlugins = [];
@@ -35,7 +36,7 @@ export class ChartComponent implements OnInit {
   setBaseChartData() {
     this.datasets = this.chartData.chartDataSet;
     this.labels = this.chartData.lineChartLabels;
-    this.type = this.chartData.type.toLocaleLowerCase();
+    this.type = this.chartData?.type.toLocaleLowerCase();
     this.isDataLoaded = true;
   }
 

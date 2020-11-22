@@ -5,9 +5,16 @@
             <p>Type: {{chartData.type}}</p>
             <p>Filename: {{chartData.fileName}}</p>
             <p>Data series in: {{chartData?.option?.dataSeriesType}}</p>
+            <button mat-stroked-button color="primary" (click)="chartLegened=!chartLegened">Legend</button>
             <button mat-stroked-button color="warn" (click)="delete()">Delete</button>
-            <canvas baseChart #baseChart="base-chart" [datasets]="datasets" [labels]="labels" [colors]="lineChartColors"
-                [legend]="false" [chartType]="type" [plugins]="lineChartPlugins">
+            <canvas 
+                    baseChart 
+                    [datasets]="datasets" 
+                    [labels]="labels" 
+                    [colors]="lineChartColors"
+                    [legend]="chartLegened" 
+                    [chartType]="type" 
+                    [plugins]="lineChartPlugins">
             </canvas>
         </div>
     </section>

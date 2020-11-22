@@ -27,6 +27,10 @@ export class UploadComponent implements OnInit {
     {
       value: 'LINE',
       description: 'Line'
+    },
+    {
+      value: 'PIE',
+      description: 'Pie'
     }
   ];
 
