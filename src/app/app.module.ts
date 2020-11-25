@@ -21,8 +21,11 @@ import { UploadComponent } from './components/upload/upload.component';
 import { ChartState } from './store/chart.state';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { ChartComponent } from './components/chart/chart.component';
+import { SpinnerState } from './store/spinner/spinner.state';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 
 @NgModule({
@@ -34,16 +37,19 @@ import { ChartComponent } from './components/chart/chart.component';
     AsideComponent,
     FooterComponent,
     UploadComponent,
-    ChartComponent
+    ChartComponent,
+    SpinnerComponent
   ],
   imports: [
     NgxsModule.forRoot([
-      ChartState
+      ChartState,
+      SpinnerState
     ]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
     BrowserModule,
     BrowserAnimationsModule,
+    MatProgressSpinnerModule,
     AppRoutingModule,
     HttpClientModule,
     ChartsModule,
