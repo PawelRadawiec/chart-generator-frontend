@@ -4,3 +4,15 @@
     margin-left: 70px;
     position: relative;
 }
+
+
+
+.paginator {
+    display: flex;
+    justify-content: center; 
+}
+
+.paginator-section{
+    margin-top: 15px;
+    background-color: #E4F0FF;
+}

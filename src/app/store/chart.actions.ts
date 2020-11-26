@@ -1,6 +1,8 @@
 import { ChartData } from '../model/chart-data.model';
 import { ChartType } from '../components/upload/upload.component';
 import { UploadDataRequest } from '../model/upload-request.model';
+import { Page } from '../model/page/page.model';
+import { Pageable } from '../model/page/pageable.model';
 
 
 export class UploadRequest {
@@ -23,13 +25,13 @@ export class UploadResponse {
 export class GetChartsRequest {
     static readonly type = '[Chart] GetChartsRequest';
 
-    constructor() { }
+    constructor(public pageable: Pageable) { }
 }
 
 export class GetChartsResponse {
     static readonly type = '[Chart] GetChartsResponse';
 
-    constructor(public response: ChartData[]) { }
+    constructor(public response: Page) { }
 }
 
 export class DeleteChartByIdRequest {

@@ -5,17 +5,20 @@ import { UploadService } from '../service/upload.service';
 import { DeleteChartByIdRequest, DeleteChartByIdResponse, GetChartsRequest, GetChartsResponse, UploadRequest, UploadResponse } from './chart.actions';
 import { mergeMap } from 'rxjs/operators';
 import { ChartDataService } from '../service/chart-data.service';
+import { Page } from '../model/page/page.model';
 
 export interface ChartStateModel {
     chartData: ChartData;
     charts: ChartData[];
+    page: Page;
 }
 
 @State<ChartStateModel>({
     name: 'charts',
     defaults: {
         chartData: null,
-        charts: []
+        charts: [],
+        page: null
     }
 })
 
@@ -32,6 +35,11 @@ export class ChartState {
     @Selector()
     static chartData(state: ChartStateModel) {
         return state.chartData;
+    }
+
+    @Selector()
+    static page(state: ChartStateModel) {
+        return state.page;
     }
 
     @Selector()
@@ -58,7 +66,7 @@ export class ChartState {
 
     @Action(GetChartsRequest)
     getChartsRequest(state: StateContext<ChartStateModel>, action: GetChartsRequest) {
-        return this.chartDataService.search().pipe(
+        return this.chartDataService.search(action.pageable).pipe(
             mergeMap(response => this.store.dispatch(new GetChartsResponse(response)))
         );
     }
@@ -66,7 +74,8 @@ export class ChartState {
     @Action(GetChartsResponse)
     getChartsResponse(state: StateContext<ChartStateModel>, action: GetChartsResponse) {
         state.patchState({
-            charts: action.response
+            charts: action.response.content,
+            page: action.response
         });
     }
 

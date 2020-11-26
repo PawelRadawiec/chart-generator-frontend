@@ -24,6 +24,8 @@
     "@ngxs/devtools-plugin": "^3.6.2",
     "@ngxs/logger-plugin": "^3.6.2",
     "@ngxs/store": "^3.6.2",
+    "angular-material-pagination": "^1.0.2",
+    "angular-paginator": "^6.0.0",
     "chart.js": "^2.9.3",
     "ng2-charts": "^2.3.2",
     "ngx-material-file-input": "^2.1.1",

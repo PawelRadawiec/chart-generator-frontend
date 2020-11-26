@@ -1,4 +1,10 @@
-
 <section *ngFor="let chart of charts">
     <app-chart [chartData]="chart"></app-chart>
 </section>
+<div class="paginator" fxLayout="row wrap">
+    <div fxFlex="row">
+        <mat-paginator class="paginator-section" [pageSize]="pagintorOptions?.pageSize"
+            [length]="pagintorOptions?.length" [pageIndex]="pagintorOptions?.pageIndex" (page)="getCharts($event)"
+            showFirstLastButtons></mat-paginator>
+    </div>
+</div>
