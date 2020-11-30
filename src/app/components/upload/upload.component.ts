@@ -18,6 +18,7 @@ export class UploadComponent implements OnInit {
   chartType = ChartType;
   type: ChartType;
   dataSeriesType: DataSeriesType;
+  file: any;
 
   options = [
     {
@@ -52,14 +53,18 @@ export class UploadComponent implements OnInit {
   ngOnInit() {
   }
 
+  clear() {
+    this.file = null;
+    this.type = null;
+    this.dataSeriesType = null;
+  }
+
   upload(event) {
     const request = new UploadDataRequest();
     request.type = this.type;
     request.dataSeriesType = this.dataSeriesType;
-    this.store.dispatch(new UploadRequest(
-      event.target.files[0],
-      request
-    ));
+    const file = event?.target?.files[0];
+    (file) ? this.store.dispatch(new UploadRequest(file, request)) : this.clear();
   }
 
 }
