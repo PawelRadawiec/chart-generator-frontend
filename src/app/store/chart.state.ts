@@ -6,19 +6,22 @@ import { DeleteChartByIdRequest, DeleteChartByIdResponse, GetChartsRequest, GetC
 import { mergeMap } from 'rxjs/operators';
 import { ChartDataService } from '../service/chart-data.service';
 import { Page } from '../model/page/page.model';
+import { Pageable } from '../model/page/pageable.model';
 
 export interface ChartStateModel {
-    chartData: ChartData;
-    charts: ChartData[];
     page: Page;
+    pageable: Pageable;
+    charts: ChartData[];
+    chartData: ChartData;
 }
 
 @State<ChartStateModel>({
     name: 'charts',
     defaults: {
-        chartData: null,
+        page: null,
+        pageable: null,
         charts: [],
-        page: null
+        chartData: null
     }
 })
 
@@ -47,6 +50,7 @@ export class ChartState {
         return state.charts;
     }
 
+
     @Action(UploadRequest)
     uploadRequestAction(state: StateContext<ChartStateModel>, action: UploadRequest) {
         return this.uploadService.upload(action.payload, action.request).pipe(
@@ -56,16 +60,17 @@ export class ChartState {
 
     @Action(UploadResponse)
     uploadResponseAction(state: StateContext<ChartStateModel>, action: UploadResponse) {
-        const updatedCharts = state.getState().charts;
-        updatedCharts.push(action.response);
         state.patchState({
-            chartData: action.response,
-            charts: updatedCharts
+            chartData: action.response
         });
+        this.store.dispatch(new GetChartsRequest(state.getState().pageable));
     }
 
     @Action(GetChartsRequest)
     getChartsRequest(state: StateContext<ChartStateModel>, action: GetChartsRequest) {
+        state.patchState({
+            pageable: action.pageable
+        });
         return this.chartDataService.search(action.pageable).pipe(
             mergeMap(response => this.store.dispatch(new GetChartsResponse(response)))
         );
@@ -74,8 +79,8 @@ export class ChartState {
     @Action(GetChartsResponse)
     getChartsResponse(state: StateContext<ChartStateModel>, action: GetChartsResponse) {
         state.patchState({
-            charts: action.response.content,
-            page: action.response
+            page: action.response,
+            charts: action.response.content
         });
     }
 
@@ -91,6 +96,7 @@ export class ChartState {
         state.patchState({
             charts: action.response
         });
+        this.store.dispatch(new GetChartsRequest(state.getState().pageable));
     }
 
 }

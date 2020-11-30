@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Store } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { ChartState } from 'src/app/store/chart.state';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ChartData } from 'src/app/model/chart-data.model';
 import { Page } from 'src/app/model/page/page.model';
 import { PaginatorOptions } from 'src/app/model/page/paginator-options.model';
@@ -43,7 +43,6 @@ export class MainComponent implements OnInit, OnDestroy {
   }
 
   getCharts(event) {
-    console.log(event);
     const pageable = new Pageable();
     pageable.size = 2;
     pageable.page = event.pageIndex;
