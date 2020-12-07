@@ -27,6 +27,7 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { ChartComponent } from './components/chart/chart.component';
 import { SpinnerState } from './store/spinner/spinner.state';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     BrowserModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
+    HttpClientTestingModule,
     MatPaginatorModule,
     AppRoutingModule,
     HttpClientModule,

@@ -1,4 +1,8 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgxsModule, State } from '@ngxs/store';
+import { UploadService } from 'src/app/service/upload.service';
+import { ChartState } from 'src/app/store/chart.state';
 
 import { UploadComponent } from './upload.component';
 
@@ -8,9 +12,10 @@ describe('UploadComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UploadComponent ]
+      declarations: [UploadComponent],
+      imports: [NgxsModule.forRoot([ChartState]), HttpClientTestingModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

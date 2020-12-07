@@ -34,14 +34,14 @@ export class ChartComponent implements OnInit {
   }
 
   setBaseChartData() {
-    this.datasets = this.chartData.chartDataSet;
-    this.labels = this.chartData.lineChartLabels;
+    this.datasets = this.chartData?.chartDataSet;
+    this.labels = this.chartData?.lineChartLabels;
     this.type = this.chartData?.type.toLocaleLowerCase();
     this.isDataLoaded = true;
   }
 
   delete() {
-    this.store.dispatch(new DeleteChartByIdRequest(this.chartData.id));
+    this.store.dispatch(new DeleteChartByIdRequest(this.chartData?.id));
   }
 
 }
