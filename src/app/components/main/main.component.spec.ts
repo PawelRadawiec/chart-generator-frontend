@@ -1,5 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgxsModule, State } from '@ngxs/store';
 import { UploadService } from 'src/app/service/upload.service';
 import { ChartState } from 'src/app/store/chart.state';
@@ -12,10 +13,14 @@ describe('MainComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainComponent ],
-      imports: [NgxsModule.forRoot([ChartState]), HttpClientTestingModule]
+      declarations: [MainComponent],
+      imports: [
+        NgxsModule.forRoot([ChartState]),
+        MatPaginatorModule,
+        HttpClientTestingModule
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

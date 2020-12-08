@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { UploadDataRequest } from 'src/app/model/upload-request.model';
 import { DeleteChartByIdRequest, DeleteChartByIdResponse, GetChartsRequest, GetChartsResponse, UploadRequest, UploadResponse } from '../chart.actions';
@@ -26,6 +27,7 @@ export interface SpinnerStateModel {
         spinner: false
     }
 })
+@Injectable()
 export class SpinnerState {
 
     constructor() { }

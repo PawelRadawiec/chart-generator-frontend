@@ -52,7 +52,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
     BrowserModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
-    HttpClientTestingModule,
+    // HttpClientTestingModule,
     MatPaginatorModule,
     AppRoutingModule,
     HttpClientModule,
