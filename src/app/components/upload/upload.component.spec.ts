@@ -1,7 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { DebugElement } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NgxsModule } from '@ngxs/store';
 import { ChartState } from 'src/app/store/chart.state';
@@ -20,10 +19,9 @@ describe('UploadComponent', () => {
   let component: UploadComponent;
   let fixture: ComponentFixture<UploadComponent>;
   let el: HTMLElement;
-  let db: DebugElement;
   let loader: HarnessLoader;
 
-  beforeEach(async(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [UploadComponent],
       imports: [
@@ -37,7 +35,7 @@ describe('UploadComponent', () => {
       ]
     })
       .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(UploadComponent);
@@ -50,29 +48,24 @@ describe('UploadComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('column data should be visible', () => {
-    fixture.detectChanges();
-    el = fixture.debugElement.queryAll(By.css('.mat-form-field .mat-select'))[0]?.nativeElement;
-    expect(el).toBeDefined();
-  });
-
   it('data series shouldn not be visible', async () => {
     let selects = await loader.getAllHarnesses(MatSelectHarness);
     expect(selects?.length).toBe(1);
   })
 
   it('data series should be visible', async () => {
-    let selects = await loader.getAllHarnesses(MatSelectHarness);
+    let selects = await loader.getAllHarnesses(MatSelectHarness.with({ selector: '#type' }));
+    const typeSelect = selects[0];
+    expect(typeSelect).toBeDefined();
     expect(selects?.length).toBe(1);
-    const chartTypeSelect = selects[0];
-    await chartTypeSelect.open();
-    const options = await chartTypeSelect.getOptions({ text: 'Bar' });
+    await typeSelect.open();
+    const options = await typeSelect.getOptions({ text: 'Bar' });
     const barOption = options[0];
     await barOption.click();
+
     selects = await loader.getAllHarnesses(MatSelectHarness);
     expect(selects?.length).toBe(2);
-    const dataSeriesSelect = selects[1];
-    expect(dataSeriesSelect).toBeDefined();
+    expect(await loader.getHarness(MatSelectHarness.with({ selector: '#dataSeriesType' }))).toBeDefined();
   });
 
 });

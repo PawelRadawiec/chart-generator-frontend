@@ -1,7 +1,7 @@
 <section>
     <mat-form-field>
         <mat-label>Column type</mat-label>
-        <mat-select [(ngModel)]="type">
+        <mat-select [(ngModel)]="type" id="type">
             <mat-option *ngFor="let option of options" [value]="option.value">
                 {{option.description}}
             </mat-option>
@@ -9,7 +9,7 @@
     </mat-form-field>
     <mat-form-field *ngIf="type">
         <mat-label>Data series type</mat-label>
-        <mat-select [(ngModel)]="dataSeriesType">
+        <mat-select [(ngModel)]="dataSeriesType" id="dataSeriesType">
             <mat-option *ngFor="let option of seriesOptions" [value]="option.value">
                 {{option.description}}
             </mat-option>
