@@ -1,21 +1,15 @@
-<main>
-    <section *ngIf="isDataLoaded">
-        <div class="chart-wrapper line-chart">
-            <p>Id: {{chartData?.id}}</p>
-            <p>Type: {{chartData?.type}}</p>
-            <p>Filename: {{chartData?.fileName}}</p>
-            <p>Data series in: {{chartData?.option?.dataSeriesType}}</p>
-            <button mat-stroked-button color="primary" (click)="chartLegened=!chartLegened">Legend</button>
-            <button mat-stroked-button color="warn" (click)="delete()">Delete</button>
-            <canvas 
-                    baseChart 
-                    [datasets]="datasets" 
-                    [labels]="labels" 
-                    [colors]="lineChartColors"
-                    [legend]="chartLegened" 
-                    [chartType]="type" 
-                    [plugins]="lineChartPlugins">
-            </canvas>
-        </div>
-    </section>
-</main>
+<div fxLayout="row" fxLayoutAlign="center center" class="chart">
+    <div *ngIf="isDataLoaded">
+        <p>Id: {{chartData?.id}}</p>
+        <p>Type: {{chartData?.type}}</p>
+        <p>Filename: {{chartData?.fileName}}</p>
+        <p>Data series in: {{chartData?.option?.dataSeriesType}}</p>
+        <button mat-stroked-button color="primary" (click)="chartLegened=!chartLegened">Legend</button>
+        <button mat-stroked-button color="warn" (click)="delete()">Delete</button>
+    </div>
+    <div *ngIf="isDataLoaded">
+        <canvas baseChart [datasets]="datasets" [labels]="labels" [colors]="lineChartColors" [legend]="chartLegened"
+            [chartType]="type" [plugins]="lineChartPlugins">
+        </canvas>
+    </div>
+</div>

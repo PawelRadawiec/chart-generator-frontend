@@ -1,4 +1,4 @@
-<section>
+<div>
     <mat-form-field>
         <mat-label>Column type</mat-label>
         <mat-select [(ngModel)]="type" id="type">
@@ -15,11 +15,11 @@
             </mat-option>
         </mat-select>
     </mat-form-field>
-    <section *ngIf="dataSeriesType">
+    <div *ngIf="dataSeriesType">
         <mat-form-field>
             <ngx-mat-file-input [(ngModel)]="file" (change)="upload($event)" placeholder="Upload file">
             </ngx-mat-file-input>
         </mat-form-field>
-    </section>
+    </div>
     <button mat-stroked-button *ngIf="file" color="warn" (click)="clear()">Clear</button>
-</section>
+</div>

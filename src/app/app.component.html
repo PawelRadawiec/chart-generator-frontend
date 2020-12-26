@@ -1,8 +1,14 @@
 <app-spinner></app-spinner>
-<div class="container">
-  <app-header></app-header>
-  <app-nav-bar></app-nav-bar>
-  <router-outlet></router-outlet>
-  <app-aside></app-aside>
-  <app-footer></app-footer>
+<div fxLayout="column" fxLayoutAlign="center none">
+  <div>
+    <app-header [deviceXs]="deviceXs"></app-header>
+  </div>
+</div>
+<div fxLayout="column" fxLayoutAlign="space-around center">
+  <div>
+    <app-nav-bar></app-nav-bar>
+  </div>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
 </div>

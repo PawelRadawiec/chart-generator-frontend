@@ -27,7 +27,10 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { ChartComponent } from './components/chart/chart.component';
 import { SpinnerState } from './store/spinner/spinner.state';
 import { SpinnerComponent } from './components/spinner/spinner.component';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+
 
 
 @NgModule({
@@ -52,7 +55,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
     BrowserModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
-    // HttpClientTestingModule,
+    MatToolbarModule,
     MatPaginatorModule,
     AppRoutingModule,
     HttpClientModule,
@@ -61,7 +64,9 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    MaterialFileInputModule
+    MaterialFileInputModule,
+    FlexLayoutModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

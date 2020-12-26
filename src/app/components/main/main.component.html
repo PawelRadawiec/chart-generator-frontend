@@ -1,6 +1,6 @@
-<section *ngFor="let chart of charts">
+<div *ngFor="let chart of charts" class="chart-list">
     <app-chart [chartData]="chart"></app-chart>
-</section>
+</div>
 <div class="paginator" fxLayout="row wrap">
     <div fxFlex="row">
         <mat-paginator class="paginator-section" [pageSize]="pagintorOptions?.pageSize"
